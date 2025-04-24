@@ -1,17 +1,15 @@
-//
-//  VertoApp.swift
-//  Verto
-//
-//  Created by Jaskirat Singh on 2025-04-23.
-//
-
 import SwiftUI
 
 @main
 struct VertoApp: App {
+    @StateObject private var vm = VertoViewModel()        // single source of truth
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(vm)
+                .preferredColorScheme(vm.theme.colorScheme)
+                .tint(vm.theme.accent)
         }
     }
 }
